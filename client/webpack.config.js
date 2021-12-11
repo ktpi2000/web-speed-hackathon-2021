@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
@@ -90,6 +91,7 @@ const config = {
       inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
     }),
+    new RemoveEmptyScriptsPlugin()
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
