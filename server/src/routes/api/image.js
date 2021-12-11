@@ -1,15 +1,23 @@
-import { promises as fs } from 'fs';
+import {
+  promises as fs
+} from 'fs';
 import path from 'path';
 
 import Router from 'express-promise-router';
 import httpErrors from 'http-errors';
-import { v4 as uuidv4 } from 'uuid';
+import {
+  v4 as uuidv4
+} from 'uuid';
 
-import { convertImage } from '../../converters/convert_image';
-import { UPLOAD_PATH } from '../../paths';
+import {
+  convertImage
+} from '../../converters/convert_image';
+import {
+  UPLOAD_PATH
+} from '../../paths';
 
 // 変換した画像の拡張子
-const EXTENSION = 'jpg';
+const EXTENSION = 'webp';
 
 const router = Router();
 
@@ -35,7 +43,11 @@ router.post('/images', async (req, res) => {
   const filePath = path.resolve(UPLOAD_PATH, `./images/${imageId}.${EXTENSION}`);
   await fs.writeFile(filePath, converted);
 
-  return res.status(200).type('application/json').send({ id: imageId });
+  return res.status(200).type('application/json').send({
+    id: imageId
+  });
 });
 
-export { router as imageRouter };
+export {
+  router as imageRouter
+};
