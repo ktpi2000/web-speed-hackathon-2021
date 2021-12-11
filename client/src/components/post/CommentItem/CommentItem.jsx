@@ -21,6 +21,8 @@ const CommentItem = ({ comment }) => {
           >
             <img
               alt={comment.user.profileImage.alt}
+              width="46"
+              height="46"
               src={getProfileImagePath(comment.user.profileImage.id)}
               loading="lazy"
               decoding="async"
