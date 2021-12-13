@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import Express from 'express';
 import session from 'express-session';
+import compression from 'compression';
 
 import {
   apiRouter
@@ -13,6 +14,7 @@ const app = Express();
 
 app.set('trust proxy', true);
 
+app.use(compression())
 app.use(
   session({
     proxy: true,
